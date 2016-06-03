@@ -3,6 +3,7 @@
 Welcome! I'm looking for key-value format with arrays support, possible RAW binary data as value, easy editable in all text editors, without overbloated&fat library. And you know what? It's not exist. Until NOW! I decided to write it myself.
 
 Goals:
+
 1) Balance of simplicity and functionality
 
 2) Possibility to edit with all text editors (if binary data present - with most text editors)
