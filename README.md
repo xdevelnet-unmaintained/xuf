@@ -1,5 +1,4 @@
-# xuf
-Xdevelnet universal format
+# xuf - Xdevelnet universal format
 
 Welcome! I'm looking for key-value format with arrays support, possible RAW binary data as value, easy editable in all text editors, without overbloated&fat library. And you know what? It's not exist.
 
