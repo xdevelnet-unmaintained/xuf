@@ -4,6 +4,7 @@ Welcome! I'm looking for key-value format with arrays support, possible RAW bina
 
 Goals:
 1) Balance of simplicity and functionality
+
 2) Possibility to edit with all text editors (if binary data present - with most text editors)
 
 # Description with examples
