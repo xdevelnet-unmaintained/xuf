@@ -1,21 +1,19 @@
 # xuf - Xdevelnet universal format
 
-Welcome! I'm looking for key-value format with arrays support, possible RAW binary data as value, easy editable in all text editors, without overbloated&fat library. And you know what? It's not exist.
-
-I decided to write it myself.
+Welcome! I'm looking for key-value format with arrays support, possible RAW binary data as value, easy editable in all text editors, without overbloated&fat library. And you know what? It's not exist. Until NOW! I decided to write it myself.
 
 Goals:
 1) Balance of simplicity and functionality
 2) Possibility to edit with all text editors (if binary data present - with most text editors)
 
-# Descriptions with examples
+# Description with examples
 
-#### Key names should be present as is, separated from value with newline (\n).
+#### Key names should be present as is, separated from value with newline (\n):
 ```
 name
 Bella
 ```
-#### Key-value pairs should be separated with two newline characters (\n\n).
+#### Key-value pairs should be separated with two newline characters (\n\n):
 ```
 name
 Bella
@@ -23,7 +21,7 @@ Bella
 second name
 Grace
 ```
-#### If you need two newlines at value part - it should be escaped with slash character between newlines (\n\\n)
+#### If you need two newlines at value part - it should be escaped with slash character between newlines (\n\\\n):
 ```
 Home address
 Ukraine
@@ -85,7 +83,7 @@ pinkie pie
 
 So, as you can see, this array just "collect" key-free data. If there is more key-free data present (like this string), then arrays collected - it will be collected later to special array OR ignored (depending on import config). Feel free to use it as comments.
 ```
-#### Arrays with undefined elemets number. Just put keyword "collect" before array declaration.
+#### Arrays with undefined elemets number. Just put keyword "collect" before array declaration:
 ```
 one
 
@@ -109,7 +107,7 @@ collect [
 ] numbers
 ```
 #### Unreadable binary data will (should) be escaped, but you may wish to store it as is for some cases.
-Declare array, which points to data right AFTER array declaration and elements numbers should represend number of RAW bytes stored. Use "below" keyword for that purpose.
+Declare array, which points to data right AFTER array declaration and elements numbers should represend number of RAW bytes stored. Use "below" keyword for that purpose:
 ```
 below [91] weird_data
 
@@ -117,6 +115,6 @@ below [91] weird_data
 ```
 #### Limitations
 
- * There is no data types. Like I said, format should be simple. If your application expecting integer - you should convert it from string. Belive me or not, it's good.
+ * There is no data types. Like I said, format should be simple. If your application expecting integer - you should convert it from string. Belive me or not, it's good when you're doing that with YOUR program, not library.
  * There is no possibility to make arrays with arrays (array with reference to array). Maybe, it will be added later.
- * RAW array data will not (and should not) be escaped. After two newlines data should be readed as many as defined.
+ * RAW array data will not (and should not) be escaped. After two newlines data wll be readed as many (in bytes) as defined.
