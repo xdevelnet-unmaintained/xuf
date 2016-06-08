@@ -280,3 +280,41 @@ port
 
 #### Limitations
  * RAW array data will not (and should not) be escaped. After two newlines data wll be readed as many (in bytes) as defined.
+ * Indents are not available for key-values.
+
+#### Escaping
+
+ * If you need square bracket at key name - it should be escaped with "\" symbol
+
+#### Comparison
+
+Compared to JSON, data can be present in both tree orders (from branches to partents and vice versa).
+
+```
+    static below [
+    my blog
+    my main website
+    ] servers
+
+  static below [
+  host
+  addr
+  ] my blog
+
+host
+7.5.1.2
+
+addr
+someaddr.org
+
+  static below [
+  host
+  addr
+  ] my main website
+  
+host
+35.245.245.9
+
+addr
+remoteaddr.com
+```
