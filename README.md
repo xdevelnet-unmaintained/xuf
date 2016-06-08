@@ -247,9 +247,36 @@ free data cleanse
 
 static []
 ```
+#### Let's make a tree! And use indents!
+```
+hostname
+example.com
 
+port
+8899
+
+  static [
+  hostname
+  port
+  ] host1
+
+hostname
+xdevelnet.org
+
+port
+1111
+
+  static [
+  hostname
+  port
+  ] host2
+
+    static [
+    host1
+    host2
+    ] hosts
+```
 
 
 #### Limitations
- * There is no possibility to make arrays with arrays (array with reference to array). Maybe, it will be added later.
  * RAW array data will not (and should not) be escaped. After two newlines data wll be readed as many (in bytes) as defined.
