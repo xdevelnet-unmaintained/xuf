@@ -83,9 +83,9 @@ pinkie pie
 
 [3] ponies
 
-So, as you can see, this array just "collect" key-free data. If there is more key-free data present (like this string), then arrays collected - it will be collected later to special array OR ignored (depending on import config). Feel free to use it as comments.
 ```
-#### Arrays with undefined elemets number. Just put keyword "collect" before array declaration:
+#### Arrays with undefined elemets number:
+
 ```
 one
 
@@ -105,18 +105,148 @@ eight
 
 nine
 
-collect [
-] numbers
+[] numbers
 ```
-#### Unreadable binary data will (should) be escaped, but you may wish to store it as is for some cases.
-Declare array, which points to data right AFTER array declaration and elements numbers should represend number of RAW bytes stored. Use "below" keyword for that purpose:
+#### Data location can be also specified:
 ```
-below [91] weird_data
+The
+
+quick
+
+brown
+
+fox
+
+jumps
+
+over
+
+above [] panagram part
+
+dummy
+key-value
+
+below [] lazydog words
+
+the
+
+lazy
+
+dog
+
+```
+You can omit above keyword if you want
+```
+what is love
+
+baby don't hurt me
+
+[] song lyric
+```
+#### Unreadable binary format:
+1) RAW (read specified number of bytes right after \n)
+```
+raw below [106] weird_data
 
 6y"��q6���oF�m�P�!�G�jPa���c�����!6=7!�M��
 ```
-#### Limitations
+2) hexadecimal (may be in any case)
+```
+3679 22ef bfbd efbf bdef bfbd 7136 efbf bdef bfbd efbf bdef bfbd 6f46 efbf bdef bfbd 6def bfbd 50ef bfbd 21ef bfbd 47ef bfbd efbf bd6a efbf bd50 61ef bfbd efbf bdef bfbd efbf bd63 efbf bdef bfbd efbf bdef bfbd efbf bdef bfbd 2136 3d37 21ef bfbd 4def bfbd efbf bd
 
- * There is no data types. Like I said, format should be simple. If your application expecting integer - you should convert it from string. Belive me or not, it's good when you're doing that with YOUR program, not library.
+above hex [] weird_data
+```
+3) decimal (may be formatted if you want)
+```
+below decimal [] weird_data
+
+  54 121  34 239 191 189 239 191 189 239 191 189 113  54 239 191
+ 189 239 191 189 239 191 189 239 191 189 111  70 239 191 189 239
+ 191 189 109 239 191 189  80 239 191 189  33 239 191 189  71 239
+ 191 189 239 191 189 106 239 191 189  80  97 239 191 189 239 191
+ 189 239 191 189 239 191 189  99 239 191 189 239 191 189 239 191
+ 189 239 191 189 239 191 189 239 191 189  33  54  61  55  33 239
+ 191 189  77 239 191 189 239 191 189
+```
+4) base64
+```
+below base64 [] weird_data
+
+Nnki77+977+977+9cTbvv73vv73vv73vv71vRu+/ve+/vW3vv71Q77+9Ie+/vUfvv73vv71q77+9
+UGHvv73vv73vv73vv71j77+977+977+977+977+977+9ITY9NyHvv71N77+977+9
+```
+5) escaped
+```
+something\0happens\there\n
+
+escape [] test string
+```
+#### Specifying type is also possible with keywords
+Type sizes:
+  * octet - 8
+  * short - 16
+  * int   - 32
+  * long  - 64
+  * float - 32
+  * double- 64
+
+```
+cash
+65
+
+card balance
+1
+
+int [
+cash
+card balance
+] money
+
+foot
+27.1
+
+breasts
+96,2
+
+long [] sizes
+```
+
+#### Private data
+By default, multiple records with same key names should be ignored. But if you gonna collect them to array - you can clear "name space":
+```
+name
+Andry
+
+height
+166
+
+static [
+name
+height
+] person1
+
+name
+Alla
+
+height
+170
+
+static [
+name
+height
+] person2
+
+here is no "name" or "person" data aren't available
+
+static []
+
+free data cleanse
+
+static []
+```
+
+
+
+#### Limitations
  * There is no possibility to make arrays with arrays (array with reference to array). Maybe, it will be added later.
  * RAW array data will not (and should not) be escaped. After two newlines data wll be readed as many (in bytes) as defined.
